@@ -1,0 +1,2 @@
+recursive-include lpe-manager/templates *
+recursive-include lpe-manager/static *
