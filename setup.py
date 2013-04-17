@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import re
 
-VERSIONFILE="lpe-manager/_version.py"
+VERSIONFILE="lpeManager/_version.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -23,5 +23,6 @@ setup(
         'Flask-Login',
         'Flask-SQLAlchemy',
         'Flask-WTF',
+        'Flask-bcrypt',
     ]
 )
