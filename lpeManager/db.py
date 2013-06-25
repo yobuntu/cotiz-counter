@@ -65,4 +65,17 @@ class Lang(db.Model):
         return self.label
 
 class Member(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer(unsigned=True), primary_key=True)
+    firstname = db.Column(db.String(100))
+    lastname  = db.Column(db.String(100))
+    username  = db.Column(db.String(100), unique=True, nullable=False)
+    email     = db.Column(db.String(100), nullable=False)
+    reddit_account = db.Column(db.String(100), unique=True, nullable=False)
+    inscription_date = db.Column(db.Date(), nullable=False)
+    fee_ok    = db.Column(db.Boolean())
+    account_ok = db.Column(db.Boolean())
+
+    def expire_at(self):
+        return self.inscription_date
+    
+

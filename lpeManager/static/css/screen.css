@@ -1,0 +1,23 @@
+body {
+    background-color: #eee;
+}
+div#container {
+}
+div#login {
+    position:absolute;
+    top: 30%;
+    left:30%;
+    margin:auto;
+}
+div#user {
+    position:absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+div#footer {
+    position:absolute;
+    bottom: 0;
+    width: 99%;
+    text-align: center; 
+}

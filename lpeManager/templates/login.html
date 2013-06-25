@@ -1,17 +1,30 @@
-{% extends "layout.html" %}
-{% block title %}
-  {{_('Sign In')}}
-{% endblock %}
-{% block body %}
-  {% if error %} <p class=error><strong>{{_('Error')}} : </strong> {{error}} {% endif %}
-  <form action="{{ url_for('login') }}" method=post>
-    {{form.hidden_tag()}}
-    <dl>
-      <dt>{{_('Username')}}:
-      <dd>{{form.username}}
-      <dt>{{_('Password')}}:
-      <dd>{{form.password}}
-    </dl>
-      <input id=submit type=submit value=Login>
-  </form>
-{% endblock %}
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>lpeManager</title>
+    {% block head %}
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" />
+      <link href="{{ url_for('static', filename='css/screen.css')}}" rel="stylesheet" type="text/css" />
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+      {% if error %} <p class=error><strong>{{_('Error')}} : </strong> {{error}} {% endif %}
+      <div id="login">
+          <h1>{{_('Sign In')}}</h1>
+      <form action="{{ url_for('login') }}" method=post>
+        {{form.hidden_tag()}}
+        <dl>
+          <dt>{{_('Username')}}:
+          <dd>{{form.username}}
+          <dt>{{_('Password')}}:
+          <dd>{{form.password}}
+        </dl>
+          <input id=submit type=submit value=Login>
+      </form>
+      </div>
+    {% endblock %}
+  <body>
+</html>

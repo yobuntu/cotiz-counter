@@ -1,6 +1,11 @@
-from wtforms import validators
 from flask.ext.wtf import Form, TextField, PasswordField
+from wtforms import validators
+from wtforms.ext.sqlalchemy.orm import model_form
+
+from lpeManager.db import db, Member
 
 class LoginForm(Form):
     username = TextField('username')
     password = PasswordField('password')
+
+MemberForm = model_form(Member, db.session, Form)
