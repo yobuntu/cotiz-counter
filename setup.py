@@ -16,6 +16,7 @@ setup(
     long_description=__doc__,
     packages=find_packages(),
     include_package_data=True,
+    scripts=['runserver','init_db'],
     zip_safe=False,
     install_requires=[
         'Flask',

@@ -12,6 +12,7 @@
                 <th>{{ _('valid until')}}</th>
                 <th>{{ _('fee ok')}}</th>
                 <th>{{ _('account ok')}}</th>
+                <th>{{ _('add payement')}}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                 <td> {{ member.expire_at() }}</td>
                 <td> {{ member.fee_ok }}</td>
                 <td> {{ member.account_ok }}</td>
+                <td><a href="{{url_for('add_contribution',member_id=member.id)}}">
+                  {{ _('add payement') }}
+                </a></td>
             </tr>
             {% endfor %}
         </tbody>

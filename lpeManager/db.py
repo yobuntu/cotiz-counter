@@ -5,6 +5,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 db = SQLAlchemy(app)
 ROLE_USER = 1
 ROLE_ADMIN = 2
+FEE_PER_MONTH = 1
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -72,10 +73,25 @@ class Member(db.Model):
     email     = db.Column(db.String(100), nullable=False)
     reddit_account = db.Column(db.String(100), unique=True, nullable=False)
     inscription_date = db.Column(db.Date(), nullable=False)
-    fee_ok    = db.Column(db.Boolean())
     account_ok = db.Column(db.Boolean())
+    contributions = db.relationship('Contribution')
 
     def expire_at(self):
-        return self.inscription_date
+        """
+        we return the expiration date computed to manage the fallowing:
+        a member can pay the next period before his account expire
+        a member can let his account expire and then pay again to reactivate
+        """
+        total_payements = sum([contribution.amount for contribution in self.contributions])
+        expire_date = 0;
+        for contribution in self.contributions:
+            if expire_date is null or expire_date < contribution_date:
+                expire_date = contribution.date
+            expire_date += timedelta(month=(contribution.amount/FEE_PER_MONTH))
+        return expire_date
     
-
+class Contribution(db.Model):
+    id = db.Column(db.Integer(unisgned=True), primary_key=True)
+    date = db.Column(db.Date(), nullable=False)
+    amount = db.Column(db.Numeric(), nullable=False)
+    member_id = db.Column(db.Integer, db.ForeignKey('member.id'))

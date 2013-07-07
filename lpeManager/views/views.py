@@ -56,7 +56,7 @@ def logout():
 
 @app.route('/')
 def home():
-    return redirect(url_for('list_members'))
+    return redirect(url_for('member_list'))
 
 
 @babel.localeselector

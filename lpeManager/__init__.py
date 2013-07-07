@@ -24,4 +24,4 @@ def load_user(userid):
 #i18n
 babel = Babel(app)
 
-from lpeManager.views import views, member
+from lpeManager.views import views, member, contribution

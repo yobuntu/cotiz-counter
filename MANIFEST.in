@@ -1,2 +1,2 @@
-recursive-include lpe-manager/templates *
-recursive-include lpe-manager/static *
+recursive-include lpeManager/templates *
+recursive-include lpeManager/static *

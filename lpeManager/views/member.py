@@ -6,9 +6,6 @@ from lpeManager import app
 from lpeManager.db import Member, db
 from lpeManager.forms import MemberForm
 
-@app.route('/')
-def home():
-    return redirect(url_for('member_list'))
 
 @app.route('/members/list', methods=['GET','POST'])
 def member_list():
