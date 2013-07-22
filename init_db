@@ -6,10 +6,6 @@ from lpeManager import app
 print app.config['SQLALCHEMY_DATABASE_URI']
 db.drop_all()
 db.create_all()
-u = User()
-u.username='admin'
-u.set_password('mdp')
-db.session.add(u)
 fr = Lang('fr')
 db.session.add(fr)
 en = Lang('en')
@@ -17,5 +13,10 @@ db.session.add(en)
 user = Role('User')
 db.session.add(user)
 admin = Role('Admin')
+u = User()
+u.username='admin'
+u.set_password('mdp')
+u.lang=fr
+db.session.add(u)
 db.session.add(admin)
 db.session.commit()
