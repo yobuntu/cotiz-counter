@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}
+  {{_('Add contribution') }}
+{% endblock %}
+{% block body %}
+  <form method="post" action="">
+    {{form.hidden_tag()}}
+    <dl>
+      {% for field in form if field.widget.input_type != 'hidden' %}
+        <dt> {{ field.label }}
+        <dd> {{ field }}
+        <div class=error>
+          {% for error in field.errors %}
+            {{ error }}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </dl>
+    <input type=submit name=addcontribution />
+  </form>
+{%endblock %}
