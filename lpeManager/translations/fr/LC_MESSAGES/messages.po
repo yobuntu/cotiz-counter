@@ -1,0 +1,106 @@
+# French translations for LPE Manager.
+# Copyright (C) 2013 ORGANIZATION
+# This file is distributed under the same license as the LPE Manager
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LPE Manager 0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2013-07-13 18:06+0200\n"
+"PO-Revision-Date: 2013-07-13 20:18+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: lpeManager/templates/login.html:14
+msgid "Error"
+msgstr "Erreur"
+
+#: lpeManager/templates/login.html:16 lpeManager/views/views.py:32
+#: lpeManager/views/views.py:43 lpeManager/views/views.py:47
+msgid "Sign In"
+msgstr "Connexion"
+
+#: lpeManager/templates/login.html:20
+msgid "Username"
+msgstr "Utilisateur"
+
+#: lpeManager/templates/login.html:22
+msgid "Password"
+msgstr "Mot de passe"
+
+#: lpeManager/templates/contribution/add.html:3
+msgid "Add contribution"
+msgstr "Ajouter une cotisation"
+
+#: lpeManager/templates/member/list.html:3
+msgid "Member List"
+msgstr "Liste des adhérents"
+
+#: lpeManager/templates/member/list.html:9
+msgid "id"
+msgstr "id"
+
+#: lpeManager/templates/member/list.html:10
+msgid "email"
+msgstr "email"
+
+#: lpeManager/templates/member/list.html:11
+msgid "reddit accout"
+msgstr "compte reddit"
+
+#: lpeManager/templates/member/list.html:12
+msgid "valid until"
+msgstr "Date d'expiration"
+
+#: lpeManager/templates/member/list.html:13
+msgid "fee ok"
+msgstr "payement validé"
+
+#: lpeManager/templates/member/list.html:14
+msgid "account ok"
+msgstr "compte validé"
+
+#: lpeManager/templates/member/list.html:15
+#: lpeManager/templates/member/list.html:28
+msgid "add payement"
+msgstr "Ajouter une cotisation"
+
+#: lpeManager/templates/member/list.html:36
+msgid "Add a member"
+msgstr "Ajouter un adhérent"
+
+#: lpeManager/views/contribution.py:16
+msgid "Contribution added for member"
+msgstr "Cotisation ajoutée pour le membre"
+
+#: lpeManager/views/member.py:19
+msgid "Member {0} added"
+msgstr "Adhérent n° {0} ajouté"
+
+#: lpeManager/views/views.py:23
+msgid "You're already logged, disconnect first"
+msgstr "Vous êtes déjà conecté, déconectez-vous d'abord"
+
+#: lpeManager/views/views.py:29
+msgid "Username not found"
+msgstr "Utilisateur non trouvé"
+
+#: lpeManager/views/views.py:30 lpeManager/views/views.py:41
+msgid "Try again please"
+msgstr "Essayez encore svp"
+
+#: lpeManager/views/views.py:37
+msgid "You are logged in"
+msgstr "Vous êtes connecté"
+
+#: lpeManager/views/views.py:40
+msgid "Wrong password"
+msgstr "Mauvais mot de passe"
+
