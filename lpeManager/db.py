@@ -1,6 +1,7 @@
 from lpeManager import app
 from flask.ext.bcrypt import check_password_hash, generate_password_hash
 from flask.ext.sqlalchemy import SQLAlchemy
+from datetime import timedelta
 
 db = SQLAlchemy(app)
 ROLE_USER = 1
@@ -83,11 +84,11 @@ class Member(db.Model):
         a member can let his account expire and then pay again to reactivate
         """
         total_payements = sum([contribution.amount for contribution in self.contributions])
-        expire_date = 0;
+        expire_date = None;
         for contribution in self.contributions:
-            if expire_date is null or expire_date < contribution_date:
+            if expire_date is None or expire_date < contribution.date:
                 expire_date = contribution.date
-            expire_date += timedelta(month=(contribution.amount/FEE_PER_MONTH))
+            expire_date += timedelta(days=(int(contribution.amount/FEE_PER_MONTH)*30))
         return expire_date
     
 class Contribution(db.Model):
