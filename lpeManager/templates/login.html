@@ -7,6 +7,7 @@
       <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" />
       <link href="{{ url_for('static', filename='css/screen.css')}}" rel="stylesheet" type="text/css" />
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
   </head>
   <body>
@@ -16,9 +17,9 @@
         <h1>{{_('Sign In')}}</h1>
         <form class="form-horizontal" role="form" action="{{ url_for('login') }}" method=post>
         {{form.hidden_tag()}}
-        <dl>
-          <dt>{{_('Username')}}:
-          <dd>{{form.username}}
+        <div class="form-group">
+          <label for="username">{{_('Username')}}</label>
+          {{form.username}}
           <dt>{{_('Password')}}:
           <dd>{{form.password}}
         </dl>
