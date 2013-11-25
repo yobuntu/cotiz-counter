@@ -10,3 +10,7 @@ class LoginForm(Form):
 
 MemberForm = model_form(Member, db.session, Form)
 ContributionForm = model_form(Contribution, db.session, Form)
+
+
+class SimpleMemberForm(Form):
+    pass

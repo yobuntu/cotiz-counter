@@ -11,9 +11,12 @@ from lpeManager._version import __version__
 def before_request():
     g.version = __version__
     g.user = current_user
-    if 'login' in request.path or 'static' in request.path:
-        pass
-    else:
+    allowed_pathes = ['login', 'static', 'inscription']
+    flag = False
+    for path in allowed_pathes:
+        if path in request.path:
+            flag = True
+    if not flag:
         if not current_user.is_authenticated() and request.base_url != url_for('login'):
             return app.login_manager.unauthorized()
 

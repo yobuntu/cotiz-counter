@@ -19,3 +19,19 @@ def member_list():
         flash(_("Member {0} added").format(member.username))
         return redirect(url_for('member_list'))
     return render_template('/member/list.html', form=form, members=members)
+
+@app.route('/inscription/new', methods=['GET','POST'])
+def inscription():
+    member = Member()
+    form = SimpleMemberForm(obj=member)
+    if form.validate_on_submit():
+        form.populate_obj(member)
+        db.session.add(member)
+        db.session.commit()
+        flash(_("Your are now registred, we are waiting for your fee to grant you full access"))
+        return redirect(url_for('inscription_complete'))
+    return render_template('/member/inscription.html', form=form)
+
+@app.route('/inscription/complete')
+def inscription_complete():
+    return render_template('/member/inscription_complete.html')
