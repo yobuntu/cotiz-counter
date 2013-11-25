@@ -12,17 +12,27 @@
   <body>
     {% block body %}
     {% if error %} <p class=error><strong>{{_('Error')}} : </strong> {{error}}</p> {% endif %}
-      <div class="container">
+      <div id="login-container"id="login-container"  class="container">
         <h1>{{_('Sign In')}}</h1>
         <form class="form-horizontal" role="form" action="{{ url_for('login') }}" method=post>
         {{form.hidden_tag()}}
-        <dl>
-          <dt>{{_('Username')}}:
-          <dd>{{form.username}}
-          <dt>{{_('Password')}}:
-          <dd>{{form.password}}
-        </dl>
-          <input id=submit type=submit value=Login>
+        <div class="form-group">
+          <label for="username" class="col-lg-4 control-label">{{_('Username')}}</label>
+          <div class="col-lg-8">
+            {{form.username(class='form-control', placeholder='Username')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-lg-4 control-label">{{_('Password')}}</label>
+          <div class="col-lg-8">
+            {{form.password(class='form-control', placeholder='Password')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-offset-4 col-lg-10">
+            <button type="submit" class="btn btn-primary">{{_('Login')}}</button>
+          </div>
+        </div>
       </form>
       </div>
     {% endblock %}
