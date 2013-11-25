@@ -3,50 +3,44 @@
   {{_('Member List')}}
 {% endblock %}
 {% block body %}
-    <table>
-        <thead>
-            <tr>
-                <th>{{ _('id')}}</th>
-                <th>{{ _('email')}}</th>
-                <th>{{ _('reddit accout')}}</th>
-                <th>{{ _('valid until')}}</th>
-                <th>{{ _('fee ok')}}</th>
-                <th>{{ _('account ok')}}</th>
-                <th>{{ _('add payement')}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for member in members %}
-            <tr>
-                <td> {{ member.id }}</td>
-                <td> {{ member.email }}</td>
-                <td> {{ member.reddit_account }}</td>
-                <td> {{ member.expire_at() }}</td>
-                <td> {{ member.fee_ok }}</td>
-                <td> {{ member.account_ok }}</td>
-                <td><a href="{{url_for('add_contribution',member_id=member.id)}}">
-                  {{ _('add payement') }}
-                </a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    <table>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ _('id')}}</th>
+        <th>{{ _('email')}}</th>
+        <th>{{ _('reddit accout')}}</th>
+        <th>{{ _('valid until')}}</th>
+        <th>{{ _('fee ok')}}</th>
+        <th>{{ _('account ok')}}</th>
+        <th>{{ _('add payement')}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for member in members %}
+      <tr>
+        <td> {{ member.id }}</td>
+        <td> {{ member.email }}</td>
+        <td> {{ member.reddit_account }}</td>
+        <td> {{ member.expire_at() }}</td>
+        <td> {{ member.fee_ok }}</td>
+        <td> {{ member.account_ok }}</td>
+        <td><a href="{{url_for('add_contribution',member_id=member.id)}}">
+          {{ _('add payement') }}
+        </a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
 
-
-    <h2>{{_('Add a member')}}</h2>
-    <form method="post" action="">
-        {{form.hidden_tag()}}
-        <dl>
-            {% for field in form if field.widget.input_type != 'hidden' %}
-                <dt> {{ field.label }}
-                <dd> {{ field }}
-                <div class=error>
-                  {% for error in field.errors %}
-                    {{ error }}
-                  {% endfor %}
-                </div>
-            {% endfor %}
-        </dl>
+  <h2>{{_('Add a member')}}</h2>
+  <form role="form" method="post" action="">
+    {{form.hidden_tag()}}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+      <div class="form-group">
+        {{ field.label }}
+        {{ field }}
+      </div>
+    {% endfor %}
         <input type=submit name=addmember />
     </form>
 {% endblock %}
