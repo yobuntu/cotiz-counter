@@ -3,19 +3,24 @@
   {{_('Add contribution') }}
 {% endblock %}
 {% block body %}
-  <form method="post" action="">
+  <form role="form" class="form-horizontal" method="post" action="">
     {{form.hidden_tag()}}
-    <dl>
       {% for field in form if field.widget.input_type != 'hidden' %}
-        <dt> {{ field.label }}
-        <dd> {{ field }}
-        <div class=error>
-          {% for error in field.errors %}
-            {{ error }}
-          {% endfor %}
+        {% set error = ' has-error' if field.errors %}
+        <div class="form-group{{error}}">
+          {{ field.label(class="col-sm-2 control-label") }}
+          <div class="col-sm-10">
+            {{ field(class="form-control") }}
+          </div>
+          <ul class="has-error">
+            {% for error in field.errors %}
+              {{ error }}
+            {% endfor %}
+          </ul>
         </div>
       {% endfor %}
-    </dl>
-    <input type=submit name=addcontribution />
+    <button class="btn btn-primary" type="submit" name="addcontribution" />
+      {{ _('Add Contribution')}}
+    </button>
   </form>
 {%endblock %}

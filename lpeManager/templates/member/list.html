@@ -3,7 +3,7 @@
   {{_('Member List')}}
 {% endblock %}
 {% block body %}
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>{{ _('id')}}</th>
@@ -33,15 +33,21 @@
   </table>
 
   <h2>{{_('Add a member')}}</h2>
-  <form role="form" method="post" action="">
+  <form role="form" class="form-horizontal" method="post" action="">
     {{form.hidden_tag()}}
     {% for field in form if field.widget.input_type != 'hidden' %}
-      <div class="form-group">
-        {{ field.label }}
-        {{ field }}
+    {% set error = ' has-error' if field.errors %}
+      <div class="form-group{{error}}">
+        {{ field.label(class="col-sm-2 control-label") }}
+        <div class="col-sm-10">
+          {{ field(class="form-control") }}
+        </div>
+          <ul class="help-block has-error">{% for error in field.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
       </div>
     {% endfor %}
-        <input type=submit name=addmember />
-    </form>
+    <button class="btn btn-primary" type="submit" name="addmember"/>
+      {{ _('add user')}}
+    </button>
+  </form>
 {% endblock %}
 

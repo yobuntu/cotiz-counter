@@ -8,7 +8,13 @@ class LoginForm(Form):
     username = TextField('username')
     password = PasswordField('password')
 
-MemberForm = model_form(Member, db.session, Form)
+MemberFormBase = model_form(Member, db.session, Form)
+
+class MemberForm(MemberFormBase):
+    def __init__(self, obj):
+        super( MemberForm, self ).__init__()
+        del self.contributions
+
 ContributionForm = model_form(Contribution, db.session, Form)
 
 
