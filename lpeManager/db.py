@@ -75,7 +75,7 @@ class Member(db.Model):
     reddit_account = db.Column(db.String(100), unique=True, nullable=False)
     inscription_date = db.Column(db.Date(), nullable=False)
     account_ok = db.Column(db.Boolean())
-    contributions = db.relationship('Contribution')
+    contributions = db.relationship('Contribution', backref="member")
 
     def expire_at(self):
         """

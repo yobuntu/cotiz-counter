@@ -15,8 +15,12 @@ class MemberForm(MemberFormBase):
         super( MemberForm, self ).__init__()
         del self.contributions
 
-ContributionForm = model_form(Contribution, db.session, Form)
+ContributionFormBase = model_form(Contribution, db.session, Form)
 
+class ContributionForm(ContributionFormBase):
+    def __init__(self, obj):
+        super( ContributionFormBase, self).__init__()
+        del self.member
 
 class SimpleMemberForm(Form):
     pass
