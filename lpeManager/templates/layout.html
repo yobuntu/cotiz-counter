@@ -5,8 +5,9 @@
     {% block head %}
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" />
+      <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
       <link href="{{ url_for('static', filename='css/screen.css')}}" rel="stylesheet" type="text/css" />
-      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{url_for('static', filename='css/datepicker.css')}}">
     {% endblock %}
   </head>
   <body>
@@ -39,7 +40,8 @@
       <p>lpeManager {{ g.version }}</p>
     </div>
     {% block script %}
-      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+      <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+      <script src="{{url_for('static', filename='js/bootstrap-datepicker.js')}}"></script>
       <script>
         var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
       </script>
