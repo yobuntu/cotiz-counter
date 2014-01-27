@@ -1,3 +1,4 @@
+from datetime import date
 from flask import request, session, g, redirect, url_for, abort, render_template, flash
 from flaskext.babel import gettext as _, format_datetime
 
@@ -10,6 +11,8 @@ def add_contribution(member_id):
     contribution = Contribution()
     member = Member.query.filter_by(id=member_id).one()
     contribution.member = member
+    contribution.amount = app.config['FEE_PER_MONTH'] 
+    contribution.date = date.today()
     form = ContributionForm(obj=contribution)
     if form.validate_on_submit():
         form.populate_obj(contribution)

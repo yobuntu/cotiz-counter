@@ -4,6 +4,13 @@ from wtforms.ext.sqlalchemy.orm import model_form
 
 from lpeManager.db import db, Member, Contribution
 
+class Hider(object):
+    def __get__(self,instance,owner):
+        raise AttributeError, "Hidden attrbute"
+
+    def __set__(self, obj, val):
+        raise AttributeError, "Hidden attribute"
+
 class LoginForm(Form):
     username = TextField('username')
     password = PasswordField('password')
@@ -11,16 +18,14 @@ class LoginForm(Form):
 MemberFormBase = model_form(Member, db.session, Form)
 
 class MemberForm(MemberFormBase):
-    def __init__(self, obj):
-        super( MemberForm, self ).__init__()
-        del self.contributions
+    contributions = None
 
 ContributionFormBase = model_form(Contribution, db.session, Form)
 
 class ContributionForm(ContributionFormBase):
-    def __init__(self, obj):
-        super( ContributionFormBase, self).__init__()
-        del self.member
+    member = None
+
+
 
 class SimpleMemberForm(Form):
     pass
