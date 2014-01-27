@@ -6,7 +6,6 @@ from datetime import timedelta
 db = SQLAlchemy(app)
 ROLE_USER = 1
 ROLE_ADMIN = 2
-FEE_PER_MONTH = 1
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -88,7 +87,7 @@ class Member(db.Model):
         for contribution in self.contributions:
             if expire_date is None or expire_date < contribution.date:
                 expire_date = contribution.date
-            expire_date += timedelta(days=(int(contribution.amount/FEE_PER_MONTH)*30))
+            expire_date += timedelta(days=(int(contribution.amount/app.config['FEE_PER_MONTH'])*30))
         return expire_date
     
 class Contribution(db.Model):
