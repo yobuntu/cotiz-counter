@@ -4,13 +4,6 @@ from wtforms.ext.sqlalchemy.orm import model_form
 
 from lpeManager.db import db, Member, Contribution
 
-class Hider(object):
-    def __get__(self,instance,owner):
-        raise AttributeError, "Hidden attrbute"
-
-    def __set__(self, obj, val):
-        raise AttributeError, "Hidden attribute"
-
 class LoginForm(Form):
     username = TextField('username')
     password = PasswordField('password')
