@@ -8,6 +8,8 @@ If the fee is payed during the membership then the membership is prolonged from 
 
 If not then a new adhesion starts at the date of the payement.
 
+Pleaes note that this github is only a mirror for this project, the real home is http://redmine.rebattu.fr/projects/lpe-manager
+
 Todo:
  * add mail reminders
  * add hall of shame
